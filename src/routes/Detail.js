@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 
-function Detail({summary}) {
+function Detail() {
     const [movie, setMovie] = useState([]);
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
@@ -12,7 +12,8 @@ function Detail({summary}) {
         setMovie(json.data.movie);
         setLoading(false);
     }
-    const loc = location.data.state;
+    const loc = useLocation();
+    console.log(loc);
 
     useEffect(() => {
         getMovie();
@@ -29,7 +30,7 @@ function Detail({summary}) {
                         <span key={g}>{g} </span>
                     ))}
                 </p>
-                <p>{loc.state.smry}</p>
+                {/* <p>{loc.summary}</p> */}
         </div>
     );
 }

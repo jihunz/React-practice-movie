@@ -2,18 +2,20 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Movie({ id, coverImg, title, summary, genres }) {
+
     return (
         <div id={id}>
             <img src={coverImg} alt={title}></img>
             <h2>
                 <Link to={{
                     pathname: `/movie/${id}`,
+                    //location 객체의 state가 null로 전달됨
                     state: {
-                        smry: summary
+                        summary: {summary}
                     }
                 }}>
                     {title}
-                </Link>    
+                </Link>
             </h2>
             <p>{summary.length <= 250 ? summary : `${summary.slice(0, 250)}...`}</p>
             <ul>
