@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Movie({ id, coverImg, title, summary, genres }) {
+    const [smry, setSmry] = useState("");
+    
+    useEffect(() => {
+        setSmry({summary});
+    }, []);
 
     return (
         <div id={id}>
@@ -11,7 +17,7 @@ function Movie({ id, coverImg, title, summary, genres }) {
                     pathname: `/movie/${id}`,
                     //location 객체의 state가 null로 전달됨
                     state: {
-                        summary: {summary}
+                        summary: {smry}
                     }
                 }}>
                     {title}
