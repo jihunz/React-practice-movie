@@ -12,8 +12,8 @@ function Detail() {
         setMovie(json.data.movie);
         setLoading(false);
     }
-    const loc = useLocation();
-    console.log(loc);
+
+    console.log(useLocation());
 
     useEffect(() => {
         getMovie();
